@@ -1,0 +1,10 @@
+query ProductsGetList($pageSize: Int, $skip: Int) {
+	products(first: $pageSize, skip: $skip) {
+		...ProductListItem
+	}
+    productsConnection {
+		pageInfo {
+			pageSize
+		}
+  }
+}

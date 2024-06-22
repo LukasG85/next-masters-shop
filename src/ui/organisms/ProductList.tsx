@@ -1,9 +1,8 @@
 import React from 'react';
 import { ProductListItem } from '../molecules/ProductListItem';
-import { getProducts } from '@/app/api/getProducts';
+import { ProductListItemFragment } from '@/gql/graphql';
 
-export const ProductList = async () => {
-  const products = await getProducts();
+export const ProductList = async ({ products }: { products: ProductListItemFragment[] }) => {
 
   return (
     <ul className='flex flex-wrap justify-center gap-4'>

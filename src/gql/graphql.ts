@@ -1,4 +1,5 @@
 /* eslint-disable */
+import type { DocumentTypeDecoration } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -10729,6 +10730,70 @@ export type _SystemDateTimeFieldVariation =
   | 'combined'
   | 'localization';
 
+export type CartRemoveProductMutationVariables = Exact<{
+  itemId: Scalars['ID']['input'];
+}>;
+
+
+export type CartRemoveProductMutation = { deleteOrderItem?: { id: string } | null };
+
+export type CartAddItemMutationVariables = Exact<{
+  cartId: Scalars['ID']['input'];
+  productId: Scalars['ID']['input'];
+  total: Scalars['Int']['input'];
+}>;
+
+
+export type CartAddItemMutation = { createOrderItem?: { id: string } | null };
+
+export type CartCreateMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CartCreateMutation = { createOrder?: { id: string } | null };
+
+export type CartGetByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type CartGetByIdQuery = { order?: { id: string, orderItems: Array<{ quantity: number, id: string, product?: { id: string, name: string, description: string, price: number, categories: Array<{ name: string }>, images: Array<{ url: string }> } | null }> } | null };
+
+export type CartFragment = { id: string };
+
+export type CartSetProductQuantityIMutationVariables = Exact<{
+  itemId: Scalars['ID']['input'];
+  quantity: Scalars['Int']['input'];
+}>;
+
+
+export type CartSetProductQuantityIMutation = { updateOrderItem?: { id: string } | null };
+
+export type ProductGetItemQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type ProductGetItemQuery = { product?: { name: string, id: string, slug: string, price: number, description: string, images: Array<{ url: string }>, categories: Array<{ name: string }> } | null };
+
+export type ProductListItemFragment = { id: string, name: string, description: string, price: number, categories: Array<{ name: string }>, images: Array<{ url: string }> };
+
+export type ProductsGetByCategorySlugQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+  pageSize?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ProductsGetByCategorySlugQuery = { products: Array<{ id: string, name: string, description: string, price: number, categories: Array<{ name: string }>, images: Array<{ url: string }> }>, productsConnection: { pageInfo: { pageSize?: number | null } } };
+
+export type ProductsGetListQueryVariables = Exact<{
+  pageSize?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ProductsGetListQuery = { products: Array<{ id: string, name: string, description: string, price: number, categories: Array<{ name: string }>, images: Array<{ url: string }> }>, productsConnection: { pageInfo: { pageSize?: number | null } } };
+
 export class TypedDocumentString<TResult, TVariables>
   extends String
   implements DocumentTypeDecoration<TResult, TVariables>
@@ -10743,3 +10808,142 @@ export class TypedDocumentString<TResult, TVariables>
     return this.value;
   }
 }
+export const CartFragmentDoc = new TypedDocumentString(`
+    fragment Cart on Order {
+  id
+}
+    `, {"fragmentName":"Cart"}) as unknown as TypedDocumentString<CartFragment, unknown>;
+export const ProductListItemFragmentDoc = new TypedDocumentString(`
+    fragment ProductListItem on Product {
+  id
+  name
+  description
+  categories(first: 1) {
+    name
+  }
+  images(first: 1) {
+    url
+  }
+  price
+}
+    `, {"fragmentName":"ProductListItem"}) as unknown as TypedDocumentString<ProductListItemFragment, unknown>;
+export const CartRemoveProductDocument = new TypedDocumentString(`
+    mutation CartRemoveProduct($itemId: ID!) {
+  deleteOrderItem(where: {id: $itemId}) {
+    id
+  }
+}
+    `) as unknown as TypedDocumentString<CartRemoveProductMutation, CartRemoveProductMutationVariables>;
+export const CartAddItemDocument = new TypedDocumentString(`
+    mutation CartAddItem($cartId: ID!, $productId: ID!, $total: Int!) {
+  createOrderItem(
+    data: {quantity: 1, total: $total, order: {connect: {id: $cartId}}, product: {connect: {id: $productId}}}
+  ) {
+    id
+  }
+}
+    `) as unknown as TypedDocumentString<CartAddItemMutation, CartAddItemMutationVariables>;
+export const CartCreateDocument = new TypedDocumentString(`
+    mutation CartCreate {
+  createOrder(data: {total: 0, email: "test@test.com", stripeCheckoutId: "1"}) {
+    ...Cart
+  }
+}
+    fragment Cart on Order {
+  id
+}`) as unknown as TypedDocumentString<CartCreateMutation, CartCreateMutationVariables>;
+export const CartGetByIdDocument = new TypedDocumentString(`
+    query CartGetById($id: ID!) {
+  order(where: {id: $id}, stage: DRAFT) {
+    id
+    orderItems {
+      quantity
+      id
+      product {
+        ...ProductListItem
+      }
+    }
+  }
+}
+    fragment ProductListItem on Product {
+  id
+  name
+  description
+  categories(first: 1) {
+    name
+  }
+  images(first: 1) {
+    url
+  }
+  price
+}`) as unknown as TypedDocumentString<CartGetByIdQuery, CartGetByIdQueryVariables>;
+export const CartSetProductQuantityIDocument = new TypedDocumentString(`
+    mutation CartSetProductQuantityI($itemId: ID!, $quantity: Int!) {
+  updateOrderItem(where: {id: $itemId}, data: {quantity: $quantity}) {
+    id
+  }
+}
+    `) as unknown as TypedDocumentString<CartSetProductQuantityIMutation, CartSetProductQuantityIMutationVariables>;
+export const ProductGetItemDocument = new TypedDocumentString(`
+    query ProductGetItem($id: ID!) {
+  product(where: {id: $id}) {
+    name
+    id
+    slug
+    price
+    description
+    images {
+      url
+    }
+    categories {
+      name
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<ProductGetItemQuery, ProductGetItemQueryVariables>;
+export const ProductsGetByCategorySlugDocument = new TypedDocumentString(`
+    query ProductsGetByCategorySlug($slug: String!, $pageSize: Int, $skip: Int) {
+  products(first: $pageSize, skip: $skip, where: {categories_some: {slug: $slug}}) {
+    ...ProductListItem
+  }
+  productsConnection(where: {categories_some: {slug: $slug}}) {
+    pageInfo {
+      pageSize
+    }
+  }
+}
+    fragment ProductListItem on Product {
+  id
+  name
+  description
+  categories(first: 1) {
+    name
+  }
+  images(first: 1) {
+    url
+  }
+  price
+}`) as unknown as TypedDocumentString<ProductsGetByCategorySlugQuery, ProductsGetByCategorySlugQueryVariables>;
+export const ProductsGetListDocument = new TypedDocumentString(`
+    query ProductsGetList($pageSize: Int, $skip: Int) {
+  products(first: $pageSize, skip: $skip) {
+    ...ProductListItem
+  }
+  productsConnection {
+    pageInfo {
+      pageSize
+    }
+  }
+}
+    fragment ProductListItem on Product {
+  id
+  name
+  description
+  categories(first: 1) {
+    name
+  }
+  images(first: 1) {
+    url
+  }
+  price
+}`) as unknown as TypedDocumentString<ProductsGetListQuery, ProductsGetListQueryVariables>;

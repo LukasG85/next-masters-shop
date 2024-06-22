@@ -10,8 +10,6 @@ type ActiveLinkProps<T extends string> = {
   href: Route<T>;
   children: ReactNode;
   exact?: boolean;
-  // className?: string;
-  // activeClassName?: string;
 };
 
 export const ActiveLink = <T extends string>({
