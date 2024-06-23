@@ -1,34 +1,37 @@
 {
-	"$schema": "https://json.schemastore.org/package.json",
-	"name": "next-masters-shop",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint --fix --dir src"
-	},
-	"dependencies": {
-		"next": "14.0.3",
-		"react": "^18",
-		"react-dom": "^18"
-	},
-	"devDependencies": {
-		"@types/node": "^20",
-		"@types/react": "^18",
-		"@types/react-dom": "^18",
-		"@typescript-eslint/eslint-plugin": "^6.13.1",
-		"@typescript-eslint/parser": "^6.13.1",
-		"autoprefixer": "^10.0.1",
-		"eslint": "^8",
-		"eslint-config-next": "14.0.3",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-import": "^2.29.0",
-		"postcss": "^8",
-		"prettier": "^3.1.0",
-		"prettier-plugin-tailwindcss": "^0.5.7",
-		"tailwindcss": "^3.3.0",
-		"typescript": "^5"
-	}
+  "name": "next-masters-shop",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config .graphqlrc.ts"
+  },
+  "dependencies": {
+    "@parcel/watcher": "^2.4.1",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.395.0",
+    "next": "14.0.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "stripe": "^15.12.0",
+    "stripe-event-types": "^3.1.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "5.0.2",
+    "@graphql-codegen/client-preset": "4.3.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@next/env": "^14.2.4",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
 }
