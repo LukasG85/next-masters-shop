@@ -1,0 +1,12 @@
+query ProductsGetByCategorySlug($slug: String!, $pageSize: Int, $skip: Int) {
+	products(first: $pageSize, skip: $skip, where: { categories_some: { slug: $slug } }) {
+		...ProductListItem
+	}
+    productsConnection(where: {categories_some: {slug: $slug}}) {
+        pageInfo {
+            pageSize
+        }
+  }
+}
+
+
