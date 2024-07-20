@@ -50,6 +50,11 @@ export default async function Product({
   async function addToCartAction() {
     "use server";
     const cart = await getOrCreateCart();
+
+    if(!cart) {
+      return 
+    }
+    
     await addToCart(cart.id, params.productId);
     revalidateTag("cart")
   }
