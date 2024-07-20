@@ -3,6 +3,8 @@
 import { cookies } from "next/headers";
 import { executeGraphQl } from "./graphqlApi";
 import { CartAddItemDocument, CartCreateDocument, CartGetByIdDocument, ProductGetItemDocument } from "@/gql/graphql";
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 export const getCart = async () => {
     const cartId = cookies().get("cartId")?.value;
@@ -47,7 +49,21 @@ export async function getOrCreateCart() {
         }
     }
 
-    const { createOrder: newCart } = await executeGraphQl({ query: CartCreateDocument });
+    const user = await currentUser();
+
+    if (!user) {
+        redirect("/sign-in");
+      }
+    
+      const email = user.emailAddresses[0]?.emailAddress;
+
+      if (!email) {
+        return;
+      }
+
+    const { createOrder: newCart } = await executeGraphQl({ query: CartCreateDocument, variables: {
+        email
+    } });
     if (!newCart) {
         throw new Error("Failed to create cart");
     }

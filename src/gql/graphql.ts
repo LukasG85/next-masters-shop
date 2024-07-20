@@ -10746,7 +10746,9 @@ export type CartAddItemMutationVariables = Exact<{
 
 export type CartAddItemMutation = { createOrderItem?: { id: string } | null };
 
-export type CartCreateMutationVariables = Exact<{ [key: string]: never; }>;
+export type CartCreateMutationVariables = Exact<{
+  email: Scalars['String']['input'];
+}>;
 
 
 export type CartCreateMutation = { createOrder?: { id: string } | null };
@@ -10767,6 +10769,13 @@ export type CartSetProductQuantityIMutationVariables = Exact<{
 
 
 export type CartSetProductQuantityIMutation = { updateOrderItem?: { id: string } | null };
+
+export type OrdersGetByEmailQueryVariables = Exact<{
+  email: Scalars['String']['input'];
+}>;
+
+
+export type OrdersGetByEmailQuery = { orders: Array<{ id: string, total: number, createdAt: unknown, orderItems: Array<{ id: string, quantity: number, total: number, product?: { name: string, price: number, images: Array<{ url: string }> } | null }> }> };
 
 export type ProductGetItemQueryVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -10844,8 +10853,8 @@ export const CartAddItemDocument = new TypedDocumentString(`
 }
     `) as unknown as TypedDocumentString<CartAddItemMutation, CartAddItemMutationVariables>;
 export const CartCreateDocument = new TypedDocumentString(`
-    mutation CartCreate {
-  createOrder(data: {total: 0, email: "test@test.com", stripeCheckoutId: "1"}) {
+    mutation CartCreate($email: String!) {
+  createOrder(data: {total: 0, email: $email, stripeCheckoutId: "1"}) {
     ...Cart
   }
 }
@@ -10884,6 +10893,27 @@ export const CartSetProductQuantityIDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<CartSetProductQuantityIMutation, CartSetProductQuantityIMutationVariables>;
+export const OrdersGetByEmailDocument = new TypedDocumentString(`
+    query OrdersGetByEmail($email: String!) {
+  orders(where: {email: $email}) {
+    id
+    total
+    orderItems {
+      id
+      quantity
+      total
+      product {
+        name
+        price
+        images {
+          url
+        }
+      }
+    }
+    createdAt
+  }
+}
+    `) as unknown as TypedDocumentString<OrdersGetByEmailQuery, OrdersGetByEmailQueryVariables>;
 export const ProductGetItemDocument = new TypedDocumentString(`
     query ProductGetItem($id: ID!) {
   product(where: {id: $id}) {
