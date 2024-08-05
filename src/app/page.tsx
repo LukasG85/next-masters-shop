@@ -1,5 +1,9 @@
-import { ProductType } from '@/types';
+import { Banner } from '@/ui/organisms/Banner';
 
 export default function Home() {
-  return <>Home</>;
+  return (
+  <main>
+    <Banner/>
+  </main>
+  );
 }
