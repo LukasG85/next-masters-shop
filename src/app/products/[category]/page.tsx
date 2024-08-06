@@ -21,7 +21,7 @@ export default async function CategoryProductPage({ params, searchParams }: { pa
     const numberOfPages = productsConnection.pageInfo.pageSize ? Math.ceil(productsConnection.pageInfo.pageSize / PAGE_SIZE) : 0
 
 
-    return (<div>
+    return (<div className='mt-40'>
         <ProductList products={products} />
         <Pagination numberOfPages={numberOfPages} />
     </div>)

@@ -15,10 +15,10 @@ export const ProductListItemDescription = ({
 
   const { name, categories, price } = product
   return (
-    <div>
-      <p>Nazwa: {name}</p>
-      {categories[0] && <p>Kategoria: {categories[0].name}</p>}
-      <p>Cena: {formmatMoney(price)}</p>
+    <div className='flex flex-col items-center justify-center'>
+      <p className='font-medium text-base'>Name: {name}</p>
+      {categories[0] && <p className='font-medium text-sm'>Category: {categories[0].name}</p>}
+      <p className='font-medium text-sm'>Price: {formmatMoney(price)}</p>
     </div>
   );
 };
