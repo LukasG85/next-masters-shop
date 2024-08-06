@@ -25,7 +25,7 @@ export default async function Products({ searchParams }: { searchParams: { page:
 
 
   return (
-    <div>
+    <div className='mt-40'>
       <ProductList products={products} />
       <Pagination numberOfPages={numberOfPages} />
     </div>
