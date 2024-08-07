@@ -1,4 +1,4 @@
-import { Pagination } from '@/ui/molecules/Pagination';
+import { Pagination } from '@/ui/molecules/Pagination/Pagination';
 import { ProductList } from '@/ui/organisms/ProductList';
 import { executeGraphQl } from '@/app/api/graphqlApi';
 import { ProductsGetListDocument } from '@/gql/graphql';

@@ -18,7 +18,7 @@ type LinkType = {
   id: number;
 };
 
-const links: LinkType[] = [
+export const links: LinkType[] = [
   { name: 'Products', href: '/products', id: 1 },
   { name: 'T-Shirt', href: '/products/t-shirts', id: 2 },
   { name: 'Hoodies', href: '/products/hoodies', id: 3 },
