@@ -1,6 +1,6 @@
 import { Banner } from '@/ui/organisms/Banner';
 import { Pagination } from '@/ui/molecules/Pagination/Pagination';
-import { ProductList } from '@/ui/organisms/ProductList';
+import { ProductList } from '@/ui/organisms/ProductList/ProductList';
 import { executeGraphQl } from '@/app/api/graphqlApi';
 import { ProductsGetListDocument } from '@/gql/graphql';
 

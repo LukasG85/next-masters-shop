@@ -1,6 +1,6 @@
 'use client'
 
-import { ActiveLink } from "@/ui/atoms/ActiveLink"
+import { ActiveLink } from "@/ui/atoms/ActiveLink/ActiveLink"
 import { links } from "@/ui/organisms/Navigation"
 
 export const Footer = () => {

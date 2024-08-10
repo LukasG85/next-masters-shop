@@ -1,7 +1,7 @@
 import { executeGraphQl } from "@/app/api/graphqlApi";
 import { ProductsGetByCategorySlugDocument } from "@/gql/graphql";
 import { Pagination } from "@/ui/molecules/Pagination/Pagination";
-import { ProductList } from "@/ui/organisms/ProductList";
+import { ProductList } from "@/ui/organisms/ProductList/ProductList";
 
 const PAGE_SIZE = 3
 

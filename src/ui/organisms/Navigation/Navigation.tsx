@@ -1,6 +1,6 @@
 'use client'
 
-import { ActiveLink } from '../../atoms/ActiveLink';
+import { ActiveLink } from '../../atoms/ActiveLink/ActiveLink';
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 import {

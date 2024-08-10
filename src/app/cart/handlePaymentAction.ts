@@ -43,8 +43,8 @@ export async function handleStripePaymentAction() {
         },
         line_items: lineItems,
         mode: "payment",
-        success_url: `http://localhost:3000/cart/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `http://localhost:3000/cart/canceled`,
+        success_url: `http://localhost:3000/cart`,
+        cancel_url: `http://localhost:3000`,
     });
     if (session.url) {
         cookies().set("cartId", "");

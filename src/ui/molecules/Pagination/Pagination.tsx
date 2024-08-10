@@ -1,6 +1,6 @@
 'use client'
 import { usePathname, useSearchParams } from 'next/navigation';
-import { ActiveLink } from '../../atoms/ActiveLink';
+import { ActiveLink } from '../../atoms/ActiveLink/ActiveLink';
 import { Route } from 'next';
 import Link from 'next/link';
 

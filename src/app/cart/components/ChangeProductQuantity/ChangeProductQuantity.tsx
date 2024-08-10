@@ -1,6 +1,6 @@
 "use client";
 import { useOptimistic } from "react";
-import { changeItemQuantity } from "./actions";
+import { changeItemQuantity } from "../../actions";
 
 export function ChangeQuantity({ itemId, quantity }: { itemId: string; quantity: number }) {
     const [optimisticQuantity, setOptimisticQuantity] = useOptimistic(

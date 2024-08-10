@@ -2,7 +2,7 @@
 
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { removeItem } from "./actions";
+import { removeItem } from "../../actions";
 
 export function RemoveButton({ productId }: { productId: string }) {
     const router = useRouter();
@@ -17,7 +17,7 @@ export function RemoveButton({ productId }: { productId: string }) {
                     router.refresh();
                 })
             }
-            className="text-sm font-medium text-indigo-600 hover:text-indigo-500 disabled:cursor-wait disabled:text-slate-400"
+            className="p-2 text-sm font-medium text-black hover:bg-black hover:text-white disabled:cursor-wait disabled:text-slate-400 transition duration-200"
         >
             Remove
         </button>
