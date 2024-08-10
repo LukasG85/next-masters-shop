@@ -1,0 +1,66 @@
+@import '../../../app//styles/variables.scss';
+
+.banner{
+  height: 500px;
+  background-color: gray;
+}
+
+.bannerContent{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba($color-black, 0.5);
+}
+
+.title {
+  color: $color-white;
+  font-size: 2rem;
+}
+
+.link {
+  padding: 5px 20px;
+  font-size: 1.5rem;
+  color: $color-white;
+  border: 1px solid $color-white;
+  background-color: rgba($color-black, 0.2);
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba($color-black, 0.5);
+  }
+}
+
+.description {
+  margin-bottom: 20px;
+  color: $color-white;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+ 
+
+  .swiper-button-next{
+    color: $color-white!important;
+    background-color: red;
+  }
+}
+
+.swiperSlide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+}
+
+
+

@@ -8,8 +8,8 @@ export const ProductListItemImage = ({
   alt: string;
 }) => {
   return (
-    <div>
-      <Image src={src} alt={alt} width={100} height={100} />
+    <div className='flex justify-center aline-center'>
+      <Image src={src} alt={alt} width={200} height={200} />
     </div>
   );
 };

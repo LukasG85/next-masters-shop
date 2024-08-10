@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductListItem } from '../molecules/ProductListItem';
+import { ProductListItem } from '../../molecules/ProductListItem';
 import { ProductListItemFragment } from '@/gql/graphql';
 
 export const ProductList = async ({ products }: { products: ProductListItemFragment[] }) => {

@@ -1,7 +1,7 @@
 import { executeGraphQl } from "@/app/api/graphqlApi";
 import { ProductsGetByCategorySlugDocument } from "@/gql/graphql";
-import { Pagination } from "@/ui/molecules/Pagination";
-import { ProductList } from "@/ui/organisms/ProductList";
+import { Pagination } from "@/ui/molecules/Pagination/Pagination";
+import { ProductList } from "@/ui/organisms/ProductList/ProductList";
 
 const PAGE_SIZE = 3
 
@@ -21,7 +21,7 @@ export default async function CategoryProductPage({ params, searchParams }: { pa
     const numberOfPages = productsConnection.pageInfo.pageSize ? Math.ceil(productsConnection.pageInfo.pageSize / PAGE_SIZE) : 0
 
 
-    return (<div>
+    return (<div className='mt-40'>
         <ProductList products={products} />
         <Pagination numberOfPages={numberOfPages} />
     </div>)
